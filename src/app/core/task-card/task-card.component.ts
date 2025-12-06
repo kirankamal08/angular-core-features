@@ -19,7 +19,7 @@ export class TaskCardComponent {
     console.log("this is an each taks", this.task)
   }
   ngOnChanges(changes:SimpleChange) {
-    console.log("ngOnChanges calles", changes)
+    console.log("ngOnChanges calls", changes)
   }
 
   ngDoCheck() {

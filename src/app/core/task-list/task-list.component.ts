@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './task-list.component.css'
 })
 export class TaskListComponent {
-  @Input() tasks: any;
+  @Input() tasks: any; 
   @Output() deleteRequest = new EventEmitter();
   constructor() {}
   ngOnInit() {
