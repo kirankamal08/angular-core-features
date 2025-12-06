@@ -1,0 +1,12 @@
+.board {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.task-section {
+  margin-top: 1.5rem;
+}

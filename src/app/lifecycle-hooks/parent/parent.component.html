@@ -1,0 +1,45 @@
+<!-- <h2>Parent Component</h2>
+
+<input [(ngModel)]="parentMessage" placeholder="Type something" />
+
+<button (click)="toggleChild()">Toggle Child</button><br>
+
+<button (click)="changeProjected()">Change Projected Content</button><br><br>
+
+This is emitted data from child<br>{{childData}}
+
+<app-child [message]="parentMessage" (sendDataToParent) = "dataFromChild($event)">
+       <p #projectedContent>{{ projectedMessage }}</p>
+</app-child> -->
+
+
+<h2>Parent Component</h2>
+
+<div class="controls">
+  <input
+    [(ngModel)]="parentMessage"
+    placeholder="Type something"
+  />
+
+  <button (click)="toggleChild()">
+    Toggle Child
+  </button>
+
+  <button (click)="changeProjected()">
+    Change Projected Content
+  </button>
+</div>
+
+<div class="output">
+  <p><strong>This is emitted data from child:</strong></p>
+  <p>{{ childData }}</p>
+</div>
+
+<app-child
+  [message]="parentMessage"
+  (sendDataToParent)="dataFromChild($event)">
+  <p #projectedContent>
+    {{ projectedMessage }}
+  </p>
+</app-child>
+

@@ -1,0 +1,7 @@
+<div class="task-list">
+  <app-task-card
+    *ngFor="let task of tasks"
+    [task]="task"
+     (delete)="onDelete($event)">
+  </app-task-card>
+</div>

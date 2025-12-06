@@ -1,0 +1,35 @@
+.card {
+  background: #ffffff;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 6px solid #4b8cf5;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+  transition: transform 0.1s;
+}
+
+.card:hover {
+  transform: scale(1.01);
+}
+
+.card span {
+  flex: 1;
+  font-size: 16px;
+}
+
+.card button {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.card button:hover {
+  background: #e60000;
+}

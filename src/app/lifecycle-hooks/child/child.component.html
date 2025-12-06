@@ -1,0 +1,16 @@
+<p><strong>Child works!</strong></p>
+
+<div class="child-message">
+  <p>{{ message }}</p>
+</div>
+
+<button (click)="sendToParent()">
+  Send Data
+</button>
+
+<h3 #viewElement>
+  Child View Element
+</h3>
+
+<!-- Projected Content -->
+<ng-content></ng-content>

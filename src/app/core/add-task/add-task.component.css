@@ -1,0 +1,33 @@
+.add-task {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.add-task input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.add-task input:focus {
+  border-color: #4b8cf5;
+  box-shadow: 0 0 4px rgba(75, 140, 245, 0.3);
+}
+
+.add-task button {
+  background: #4b8cf5;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.add-task button:hover {
+  background: #1f6dff;
+}

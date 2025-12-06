@@ -1,0 +1,88 @@
+{{messageToChild}}
+<form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="p-4 border rounded shadow-sm bg-white">
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input 
+      type="text" 
+      id="name" 
+      class="form-control" 
+      formControlName="name" 
+      placeholder="Enter your name">
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input 
+      type="email" 
+      id="email" 
+      class="form-control" 
+      formControlName="email" 
+      placeholder="Enter your email">
+  </div>
+
+  <div class="mb-3">
+    <label for="empcode" class="form-label">Employee Code</label>
+    <input 
+      type="text" 
+      id="empcode" 
+      class="form-control" 
+      formControlName="empcode" 
+      placeholder="Employee Code">
+  </div>
+
+<div class="mb-3" formArrayName="skills">
+
+  <div *ngFor="let skill of employeeSkillArr.controls; let i = index" [formGroupName]="i">
+
+    <input 
+      type="text" 
+      class="form-control" 
+      formControlName="skillName" 
+      placeholder="skills">
+
+    <button type="button" (click)="removeSkill(i)">Remove Skill</button>
+
+  </div>
+
+</div>
+
+<button type="button" (click)="addSkills()">Add more Skill</button>
+<button type="submit" class="btn btn-primary w-100" [disabled]="feedbackForm.invalid">Submit</button>
+</form>
+
+<div *ngIf="feedbackFormData">
+  <p><strong>Name:</strong> {{ feedbackFormData.name }}</p>
+  <p><strong>Email:</strong> {{ feedbackFormData.email }}</p>
+  <p><strong>Empcode:</strong> {{ feedbackFormData.empcode }}</p>
+  <h3>Skills:</h3>
+  <ul>
+    <li *ngFor="let skill of feedbackFormData.skills">
+      {{ skill.skillName }}
+    </li>
+  </ul>
+</div>
+
+
+<!-- <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="feedback-form">
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name" placeholder="Enter your name">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" placeholder="Enter your email">
+  </div>
+
+  <div class="form-group">
+    <label for="empcode">Employee Code</label>
+    <input id="empcode" type="text" formControlName="empcode" placeholder="Employee Code">
+  </div>
+
+  <button type="submit" class="btn-submit" [disabled]="feedbackForm.invalid">
+    Submit
+  </button>
+
+</form> -->

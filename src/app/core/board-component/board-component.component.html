@@ -1,0 +1,18 @@
+<!-- <app-add-task (newtaskCreated) = "getNewTask($event)"></app-add-task>
+
+<div *ngFor="let task of taskList">
+    <li>{{task}}</li>
+</div> -->
+
+
+<div class="board">
+  <h2>Task Manager</h2>
+
+  <app-add-task (newtaskCreated)="getNewTask($event)"></app-add-task>
+
+  <div class="task-section">
+    <app-task-list [tasks] = "taskList"
+    (deleteRequest)="deleteTask($event)">
+    </app-task-list>
+  </div>
+</div>
