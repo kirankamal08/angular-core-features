@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-add-task',
@@ -9,6 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class AddTaskComponent {
   @Output() newtaskCreated = new EventEmitter();
+  @ViewChild('newTask') newTask!:ElementRef;
   constructor() {}
   ngOnInit() {
 

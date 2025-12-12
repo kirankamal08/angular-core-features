@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, ɵInternalFormsSharedModule } from '@angular/forms';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AutofocusDirective } from '../core/directives/autofocus.directive';
 
 @Component({
   selector: 'app-feedback',
   standalone: true,
-  imports: [ɵInternalFormsSharedModule, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [ɵInternalFormsSharedModule, FormsModule, ReactiveFormsModule, CommonModule, AutofocusDirective],
   templateUrl: './feedback.component.html',
   styleUrl: './feedback.component.css'
 })
@@ -26,6 +27,10 @@ export class FeedbackComponent {
       skills: this.fb.array([this.createSkillsArr()])
     })
     this.dataEmit();
+  }
+
+  ngAfterViewInit() {
+
   }
 
   createSkillsArr(): FormGroup {

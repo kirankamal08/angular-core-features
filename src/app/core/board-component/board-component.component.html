@@ -14,5 +14,8 @@
     <app-task-list [tasks] = "taskList"
     (deleteRequest)="deleteTask($event)">
     </app-task-list>
+   <div appDeleteOnKey (delete)="onDelete()">
+  Press the Delete key and this will trigger onDelete()
+</div>
   </div>
 </div>

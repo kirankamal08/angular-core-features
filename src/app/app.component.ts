@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl,Form, FormBuilder, Validators,FormArray} from '@angular/forms';
 import { RouterOutlet,RouterLink, RouterLinkActive } from '@angular/router';  
 import { ReversePipe } from './core/pipes/reverse.pipe';
@@ -6,11 +6,14 @@ import { HighlightDirective } from './core/directives/highlight.directive';
 import { of,map,mergeMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { NotificationServiceService } from './core/services/notification-service.service';
+import { HeaderComponentComponent } from './core/layout/header-component/header-component.component';
+import { FooterComponentComponent } from './core/layout/footer-component/footer-component.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,ReactiveFormsModule,ReversePipe,HighlightDirective,RouterLink,RouterLinkActive,FeedbackComponent],
+  imports: [RouterOutlet,ReactiveFormsModule,ReversePipe,HighlightDirective,RouterLink,RouterLinkActive,FeedbackComponent,HeaderComponentComponent,FooterComponentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -20,12 +23,13 @@ export class AppComponent {
   myName:string = "Kiran kamal";
   fruits = ['Apple', 'Banana', 'Mango'];
   parentData : string = "Data from App Component to Feedback Component"
-  constructor(private fb:FormBuilder,private http:HttpClient) {
-  }
+  httpNotification = inject(NotificationServiceService)
+  constructor(private fb:FormBuilder,private http:HttpClient) {}
 
   ngOnInit() {
     this.testRxjs();
     this.getChildData();
+    this.httpNotification.notificationCounter$.subscribe(count => console.log("Notification count value in app component",count));
   }
 
 
@@ -41,7 +45,6 @@ export class AppComponent {
 
 
   testRxjs() {
-    console.log("nzbfnsfbnsdfbsndbfdsn");
     const urlObservable = of(
       "https://api.github.com/users/kirankamal08",
       "https://api.github.com/users/kirankamal08/repos",
@@ -62,8 +65,6 @@ export class AppComponent {
           console.log('All files fetched!');
       }
     });
-//     const obs$ = of(1, 2, 3);
-// obs$.subscribe(value => console.log(value));
   }
   getChildData(event?:any) {
     console.log(event);

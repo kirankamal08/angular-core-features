@@ -2,10 +2,10 @@ import { Routes } from '@angular/router';
 import { RegisterComponent } from './core/features/auth/register/register.component';
 
 export const routes: Routes = [
-    // {
-    // path:'register',
-    // component : RegisterComponent
-    // }
+    {
+        path: '',
+        loadComponent : () => import('./home-component/home-component.component').then(c => c.HomeComponentComponent)
+    },
     {
         path:'register',
         loadComponent : () => import('./core/features/auth/register/register.component').then(c => c.RegisterComponent)
@@ -21,5 +21,9 @@ export const routes: Routes = [
     {
         path:'task-board',
         loadComponent: () => import('./core/board-component/board-component.component').then(c => c.BoardComponentComponent)
+    },
+    {
+        path:'rxjs-operators',
+        loadComponent: () => import('./core/rxjs-features/rxjs-operators/rxjs-operators.component').then(c => c.RxjsOperatorsComponent)
     }
 ];

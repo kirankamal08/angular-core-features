@@ -1,4 +1,4 @@
-<div class="card">
+<div appHighlight class="card" [class.highlighted]="isHighlighted">
   <span>{{ task }}</span>
   <button (click)="delete.emit(task)">Delete</button> 
 </div>

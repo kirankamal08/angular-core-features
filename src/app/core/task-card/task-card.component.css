@@ -33,3 +33,9 @@
 .card button:hover {
   background: #e60000;
 }
+
+
+.highlighted {
+  background: yellow;
+  transition: background 0.3s ease;
+}

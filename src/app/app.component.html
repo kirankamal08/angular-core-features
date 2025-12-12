@@ -1,38 +1,9 @@
-<!-- 
-{{myName | reverse}}
-
-<p>{{ fruits | reverse }}</p>
-
-<button (click)="update()">Change message</button>
-
-<p appHighlight>This is Dummy text to show the directive in working</p> -->
-
-
-<!-- <a style="cursor: pointer;"  (click)="stop($event)" routerLink="/register">Register</a>
-<router-outlet></router-outlet> -->
-
-<header>
-    <nav class="navbar">
-      <div class="logo">MyApp</div>
-      <ul class="nav-links">
-        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-        <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-        <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
-        <li><a routerLink="/parent" routerLinkActive="active">Parent</a></li>
-        <li><a routerLink="/feedback" routerLinkActive="active">Feedback</a></li>
-        <li><a routerLink="/task-board" routerLinkActive="active">Task Board</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <main class="content">
+    <app-header-component></app-header-component>
+    <main class="content">
     <!-- <app-feedback [messageToChild] = "parentData" (messageFromChild) = "getChildData($event)"></app-feedback>  -->
     <router-outlet></router-outlet>
     
   </main>
-  
-  <footer>
-    <p>© 2025 MyApp. All rights reserved.</p>
-  </footer>
+  <app-footer-component></app-footer-component>
   
 

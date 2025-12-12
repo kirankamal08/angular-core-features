@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { CommonModule } from '@angular/common';
 import { TaskListComponent } from '../task-list/task-list.component';
@@ -11,21 +11,27 @@ import { TaskListComponent } from '../task-list/task-list.component';
   styleUrl: './board-component.component.css'
 })
 export class BoardComponentComponent {
-  constructor() {
-
-  }
+  @ViewChild(AddTaskComponent) addTaskCompoentent!: AddTaskComponent;
+  @ViewChildren(TaskListComponent) taksLists!:QueryList<TaskListComponent>;
+  constructor() {}
 
   ngOnInit() {
   
   }
 
   ngAfterViewInit() {
-    console.log("TaskList: ngAfterViewInit -> child components loaded");
-    console.log("TaskCard count:", this.taskList.length);
+    // using @ViewChild to access child component properties
+    const input = (this.addTaskCompoentent as any).newTask;
+    if (input) input.nativeElement.focus();
+
+    // Using @ViewChildren to access multiple child components
+    this.taksLists.forEach((taskList) => {
+      taskList.highlightAll();
+    })
   }
 
   ngAfterViewChecked() {
-    console.log("TaskList: ngAfterViewChecked -> view checked");
+  //  console.log("Board Component: ngAfterViewChecked -> view checked");
   }
 
 
@@ -42,4 +48,10 @@ export class BoardComponentComponent {
   deleteTask($event:any) {
     this.taskList = this.taskList.filter(task => task !== $event)
   }
+
+  onDelete() {
+  console.log('Delete key pressed!');
+  this.taskList = this.taskList.pop();
+  // Perform deletion logic here
+}
 }
